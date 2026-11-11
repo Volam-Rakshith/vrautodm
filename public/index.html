@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <title>VR AUTO DM — VR Developments</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">VR</span><span><b>VR AUTO DM</b><small>VR DEVELOPMENTS</small></span></a>
+    <div class="top-right"><span class="status-dot"></span><span>LOCAL DASHBOARD</span><button class="avatar">VR</button></div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div><div class="eyebrow">INSTAGRAM AUTOMATION / CONTROL CENTER</div>
+        <h1>Conversations,<br><em>on autopilot.</em></h1>
+        <p>Turn eligible Instagram post comments into timely private replies.</p>
+      </div>
+      <div class="hero-card"><span class="tiny-label">AUTOMATION STATUS</span><div class="hero-status"><span class="pulse"></span><strong id="statusText">PAUSED</strong></div><button id="toggle" class="primary">Enable automation <span>↗</span></button><small>Server-side webhook required</small></div>
+    </section>
+
+    <section class="notice"><span class="notice-icon">i</span><div><b>Important: follow verification limitation</b><p>Instagram's supported APIs do not provide a general way to check whether an arbitrary commenter follows your account. This build can send a private reply to an eligible comment, but it cannot reliably verify a follow and then unlock a second DM. The message can invite people to follow, without claiming their follow was checked.</p></div></section>
+
+    <section class="grid">
+      <article class="panel wide">
+        <div class="panel-head"><div><span class="eyebrow">01 / TRIGGER</span><h2>Comment-to-DM rule</h2></div><span class="tag">INSTAGRAM</span></div>
+        <label class="switch-row"><span><b>Private reply on new comments</b><small>Send one private reply to an eligible comment.</small></span><input id="ruleEnabled" type="checkbox" checked><i></i></label>
+        <div class="field"><label for="keyword">Optional keyword filter</label><input id="keyword" placeholder="e.g. GUIDE (leave blank for every comment)"><small>Only comments containing this word will trigger a reply.</small></div>
+        <div class="field"><label for="template">Private reply message</label><textarea id="template" rows="4">Hey {{username}}! Thanks for commenting. Follow our page for updates, then check our profile for more. — VR Developments</textarea><small>Use <code>{{username}}</code> to insert the commenter's username.</small></div>
+        <button id="save" class="secondary">Save settings</button><span id="saved" class="saved"></span>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><span class="eyebrow">02 / CONNECTION</span><h2>Meta setup</h2></div><span class="tag muted">REQUIRED</span></div>
+        <div class="connect-item"><span class="icon">◎</span><div><b>Instagram professional account</b><small>Business or Creator account connected to a Meta app.</small></div></div>
+        <div class="connect-item"><span class="icon">⌁</span><div><b>Webhook subscription</b><small>Subscribe to the Instagram comments webhook field.</small></div></div>
+        <div class="connect-item"><span class="icon">⌑</span><div><b>Private replies permission</b><small>Configure the permissions and access required by Meta for your app.</small></div></div>
+        <div class="callout">Never paste your access token into this page. Keep it in the backend environment variables.</div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><span class="eyebrow">03 / ACTIVITY</span><h2>Activity overview</h2></div><span class="tag muted">SESSION</span></div>
+        <div class="stats"><div><strong id="replyCount">—</strong><small>Replies sent</small></div><div><strong id="eventCount">—</strong><small>Webhook events</small></div></div>
+        <p class="muted-text">Live delivery logs appear in the backend host's server logs. This static dashboard does not store Instagram data.</p>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><span class="eyebrow">04 / SAFETY</span><h2>Built-in guardrails</h2></div></div>
+        <ul class="checks"><li>Official Meta Graph API integration</li><li>One private reply per comment event (deduplication during server uptime)</li><li>Keyword filtering</li><li>Access token stays server-side</li><li>No password collection or browser scraping</li></ul>
+      </article>
+    </section>
+    <footer><span>VR AUTO DM <b>·</b> VR DEVELOPMENTS</span><span>Progress + Perfection = Success.</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
