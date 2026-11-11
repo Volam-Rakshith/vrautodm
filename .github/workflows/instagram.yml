@@ -1,0 +1,16 @@
+name: VR AUTO DM
+
+on: 
+    workflow_dispatch: 
+    push: 
+     branches: 
+      - main
+
+jobs:
+    run:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Keep Workflow Active
+          run: 
+            echo "VR AUTO DM workflow started"
+            echo "Backend setup comes next !"
